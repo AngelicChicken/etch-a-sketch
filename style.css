@@ -1,7 +1,28 @@
+#content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+#dimensionButton{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    padding: 20px;
+    border: 2px solid rgb(255, 111, 68);
+    border-radius: 5px;
+    background-color: rgb(255, 188, 175);
+    color: white;
+    font-size: large;
+}
+
 #grid {
-    border: 1px solid black;
-    width: 25px;
-    height: 25px;
+    border: 1px solid rgba(255, 107, 107, 0.421);
+    width: 30px;
+    height: 30px;
 }
 
 #container {
@@ -9,4 +30,5 @@
     flex-wrap: wrap;
     max-width: 960px;
     flex: auto;
+    border: 1px solid black;
 }
