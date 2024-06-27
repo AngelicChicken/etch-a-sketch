@@ -4,6 +4,10 @@
     height: 25px;
 }
 
+#grid:hover{
+    background-color: blue;
+}
+
 #container {
     display: flex;
     flex-wrap: wrap;
