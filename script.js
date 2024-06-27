@@ -17,40 +17,39 @@ function buttonPress(){
 
 function buildGrid(){
     let dimension = prompt("what dimension do you want your grid to be?", 16);
-    if(dimension >= 100){
-        alert("dimension too high please choose anything lower than 100!");
-    } else {
-        while(gridColumnAmount < dimension){
-            //create place to store the grid
-            const gridColumn = document.createElement("div");
-            const gridRow = document.createElement("div");
-    
-            //if there's less than 16 grid in a row, create more grid
-            while(gridRowAmount < dimension){
-                const grid = document.createElement("div");
-                grid.setAttribute("id", "grid");
+    while(dimension >= 100){
+        dimension = prompt("dimension too high please choose anything lower than 100!");
+    }
 
-                //generate random color that appear when mouse passes over the grid
-                grid.addEventListener("mouseover", () => {
-                    grid.style.backgroundColor = '#' + parseInt(Math.random() * 0xffffff).toString(16);
-                });
-                
-                //add made grid to row
-                gridRow.appendChild(grid);
+    while(gridColumnAmount < dimension){
+        //create place to store the grid
+        const gridColumn = document.createElement("div");
+        const gridRow = document.createElement("div");
+
+        //if there's less than 16 grid in a row, create more grid
+        while(gridRowAmount < dimension){
+            const grid = document.createElement("div");
+            grid.setAttribute("id", "grid");
+
+            //generate random color that appear when mouse passes over the grid
+            grid.addEventListener("mouseover", () => {
+                grid.style.backgroundColor = '#' + parseInt(Math.random() * 0xffffff).toString(16);
+            });
             
-                gridRowAmount++
-            }
-    
-            //reset amount of grid in a row so next row can be generated
-            gridRowAmount = 0;
-    
-            //add row to the column
-            gridColumn.appendChild(gridRow);
-            //add column to overall grid container
-            container.appendChild(gridColumn);
-            gridColumnAmount++
+            //add made grid to row
+            gridRow.appendChild(grid);
+        
+            gridRowAmount++
         }
 
+        //reset amount of grid in a row so next row can be generated
+        gridRowAmount = 0;
+
+        //add row to the column
+        gridColumn.appendChild(gridRow);
+        //add column to overall grid container
+        container.appendChild(gridColumn);
+        gridColumnAmount++
     }
 }
 
