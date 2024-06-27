@@ -29,6 +29,11 @@ function buildGrid(){
             while(gridRowAmount < dimension){
                 const grid = document.createElement("div");
                 grid.setAttribute("id", "grid");
+
+                //generate random color that appear when mouse passes over the grid
+                grid.addEventListener("mouseover", () => {
+                    grid.style.backgroundColor = '#' + parseInt(Math.random() * 0xffffff).toString(16);
+                });
                 
                 //add made grid to row
                 gridRow.appendChild(grid);
