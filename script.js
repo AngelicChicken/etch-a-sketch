@@ -1,30 +1,61 @@
-const container = document.querySelector("#container");
+let container = document.querySelector("#container");
+const content = document.querySelector("#content");
+const button = document.querySelector("#dimensionButton");
 
 let gridRowAmount = 0;
 let gridColumnAmount = 0;
 
-while(gridColumnAmount < 16){
-    //create place to store the grid
-    const gridColumn = document.createElement("div");
-    const gridRow = document.createElement("div");
+button.addEventListener("click", buttonPress);
 
-    //if there's less than 16 grid in a row, create more grid
-    while(gridRowAmount < 16){
-        const grid = document.createElement("div");
-        grid.setAttribute("id", "grid");
-        
-        //add made grid to row
-        gridRow.appendChild(grid);
-    
-        gridRowAmount++
+function buttonPress(){
+    //if previous column already exist run function to clear it
+    if(gridColumnAmount > 0){
+        clearGrid();
     }
+    buildGrid();
+}
 
-    //reset amount of grid in a row so next row can be generated
-    gridRowAmount = 0;
+function buildGrid(){
+    let dimension = prompt("what dimension do you want your grid to be?", 16);
+    if(dimension >= 100){
+        alert("dimension too high please choose anything lower than 100!");
+    } else {
+        while(gridColumnAmount < dimension){
+            //create place to store the grid
+            const gridColumn = document.createElement("div");
+            const gridRow = document.createElement("div");
+    
+            //if there's less than 16 grid in a row, create more grid
+            while(gridRowAmount < dimension){
+                const grid = document.createElement("div");
+                grid.setAttribute("id", "grid");
+                
+                //add made grid to row
+                gridRow.appendChild(grid);
+            
+                gridRowAmount++
+            }
+    
+            //reset amount of grid in a row so next row can be generated
+            gridRowAmount = 0;
+    
+            //add row to the column
+            gridColumn.appendChild(gridRow);
+            //add column to overall grid container
+            container.appendChild(gridColumn);
+            gridColumnAmount++
+        }
 
-    //add row to the column
-    gridColumn.appendChild(gridRow);
-    //add column to overall grid container
-    container.appendChild(gridColumn);
-    gridColumnAmount++
+    }
+}
+
+function clearGrid(){
+    //reset column amount
+    gridColumnAmount = 0;
+
+    //delete previous container and make a new one
+    container.remove();
+    container = document.createElement("div");
+    container.setAttribute("id", "container");
+    content.appendChild(container);
 }
