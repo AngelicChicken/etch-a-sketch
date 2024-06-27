@@ -11,5 +11,6 @@
 #container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 432px;
+    max-width: 960px;
+    flex: auto;
 }
